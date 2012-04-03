@@ -103,7 +103,7 @@ footer {
   		margin-left: 10px;
   	}
   }
-  
+}
   /* sidebar */
 
 aside {
@@ -132,8 +132,32 @@ aside {
   float: left;
   margin-right: 10px;
 }
-  
-  /* miscellaneous */
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  margin-bottom: 15px;
+  @include box_sizing;
+}  
+
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
+
+/* miscellaneous */
 
 .debug_dump {
   clear: both;
@@ -142,4 +166,4 @@ aside {
   margin-top: 45px;
   @include box_sizing;
 }
-}
+
