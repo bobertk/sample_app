@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   
   it { should be_valid }
@@ -43,8 +44,8 @@ describe User do
     before { @user.name = "a" * 51 }
     it { should_not be_valid }
   end
-  # far from exhaustive - check the common email forms
-  describe "when email format is invalid" do
+    
+  describe "when email format is invalid" do  # check common email forms
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
       addresses.each do |invalid_address|
@@ -108,5 +109,10 @@ describe User do
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end
+  end
+  
+  describe "remember token" do  # keep permanent session token
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
